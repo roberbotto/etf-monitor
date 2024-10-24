@@ -9,7 +9,7 @@ def get_drawdown(last_price, max_price):
         enought or not to call Telegram API """
     drawdown = (max_price - last_price) / max_price
     return (
-        round(drawdown, 2),
+        f"{drawdown:.2f}",
         True if drawdown >= 0.3 else False
     )
 
@@ -30,8 +30,8 @@ def lambda_handler(event, context):
         }
     
     body = {
-        'last_day_price': round(last_day_price, 2),
-        'max_price_52_weeks': round(max_price_52_weeks, 2),
+        'last_day_price': f"{last_day_price:.2f}",
+        'max_price_52_weeks': f"{max_price_52_weeks:.2f}",
         'telegram_request': False
     }
 
